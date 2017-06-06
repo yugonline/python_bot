@@ -68,5 +68,5 @@ def detect_text(path):
 #             print('Score      : {}'.format(entity.score))
 #             print('Description: {}'.format(entity.description))
 
-path = "../images/test3.png"
-print detect_text(path)
+# path = "../images/test3.png"
+# print detect_text(path)
