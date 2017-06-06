@@ -85,5 +85,5 @@ def detect_text_uri(path):
 #             print('Score      : {}'.format(entity.score))
 #             print('Description: {}'.format(entity.description))
 
-# path = "../images/test3.png"
-# print detect_text(path)
+# path = "https://www.crossref.org/wp/blog/uploads/2016/10/2.png"
+# print detect_text_uri(path)
