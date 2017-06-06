@@ -31,7 +31,7 @@ def linkgrab(bot,update):
 
 def main():
 	secret_key_file = open("secret_key.txt").readlines()
-	updater = Updater(secret_key_file[0])
+	updater = Updater(secret_key_file[0].strip())
 
 	updater.dispatcher.add_handler(CommandHandler('start', start))
 	updater.dispatcher.add_handler(CommandHandler('hello', hello))
