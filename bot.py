@@ -29,13 +29,17 @@ def linkgrab(bot,update):
 	update.message.reply_text(
 		'{} please upload an image now'.format(update.message.from_user.first_name))
 
-updater = Updater('340664104:AAG3RpwP4maWNbO2FtTCu2xqvGGFLU_F2Xs')
+def main():
+	updater = Updater('YOUR API CODE HERE')
 
-updater.dispatcher.add_handler(CommandHandler('start', start))
-updater.dispatcher.add_handler(CommandHandler('hello', hello))
-updater.dispatcher.add_handler(CommandHandler('yo',yo))
-updater.dispatcher.add_handler(CommandHandler('linkgrab',linkgrab))
+	updater.dispatcher.add_handler(CommandHandler('start', start))
+	updater.dispatcher.add_handler(CommandHandler('hello', hello))
+	updater.dispatcher.add_handler(CommandHandler('yo',yo))
+	updater.dispatcher.add_handler(CommandHandler('linkgrab',linkgrab))
 
 
-updater.start_polling()
-updater.idle()
+	updater.start_polling()
+	updater.idle()
+
+if __name__ == '__main__':
+	main()
