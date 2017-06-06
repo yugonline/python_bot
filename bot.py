@@ -17,19 +17,25 @@ def photo(bot, update):
     newFile.download('test.jpg')
     bot.sendMessage(chat_id=update.message.chat_id, text="download succesfull")
 def get_input(bot,update):
+	update.message.reply_text("Hi!")
 	user = update.message.from_user
 	if update.message.photo:
 		update.message.reply_text("Thinking hard...")
 		photo_id = update.message.photo[-1].file_id
 		photo_file = bot.getFile(photo_id)
 		photo_file.download()
+def linkgrab(bot,update):
+	Image_Response = updater.dispatcher.add_handler(MessageHandler(Filters.photo,get_input))
+	update.message.reply_text(
+		'{} please upload an image now'.format(update.message.from_user.first_name))
 
 updater = Updater('340664104:AAG3RpwP4maWNbO2FtTCu2xqvGGFLU_F2Xs')
 
 updater.dispatcher.add_handler(CommandHandler('start', start))
 updater.dispatcher.add_handler(CommandHandler('hello', hello))
 updater.dispatcher.add_handler(CommandHandler('yo',yo))
-updater.dispatcher.add_handler(MessageHandler(get_input))
+updater.dispatcher.add_handler(CommandHandler('linkgrab',linkgrab))
+
 
 updater.start_polling()
 updater.idle()
