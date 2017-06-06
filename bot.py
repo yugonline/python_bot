@@ -30,7 +30,8 @@ def linkgrab(bot,update):
 		'{} please upload an image now'.format(update.message.from_user.first_name))
 
 def main():
-	updater = Updater('YOUR API CODE HERE')
+	secret_key_file = open("secret_key.txt").readlines()
+	updater = Updater(secret_key_file[0])
 
 	updater.dispatcher.add_handler(CommandHandler('start', start))
 	updater.dispatcher.add_handler(CommandHandler('hello', hello))
