@@ -1,5 +1,5 @@
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
-#from vision import detect_text
+from vision import detect_text_uri
 
 def start(bot, update):
     update.message.reply_text('Hello World!')
@@ -14,7 +14,6 @@ def yo(bot,update):
 
 def get_input(bot,update):
 	print("get_input")
-	update.message.reply_text("Hi!")
 	user = update.message.from_user
 	if update.message.photo:
 		print("is a photo")
@@ -26,18 +25,17 @@ def get_input(bot,update):
 		print(photo_id)
 		photo_file = bot.getFile(photo_id)
 		ID = photo_file.file_path
-		print(ID)
-		try:
-			photo_file.download(custom_path="photos/")
-		except:
-			print("couldn't download!")
+		url = detect_text_uri(ID)
+		url_string = ' '.join(url)
+		update.message.reply_text(url_string)
 
 		
 
 def linkgrab(bot,update):
 	update.message.reply_text(
 		'{}! I am up for grabs.'.format(update.message.from_user.first_name))
-
+def help(bot,update):
+	update.message.reply_text('{} Please send an image that contains URLs so I can extract the URLs and send them back to you!'.format(update.message.from_user.first_name))
 
 def main():
 	secret_key_file = open("secret_key.txt").readlines()
@@ -47,6 +45,7 @@ def main():
 	updater.dispatcher.add_handler(CommandHandler('hello', hello))
 	updater.dispatcher.add_handler(CommandHandler('yo',yo))
 	updater.dispatcher.add_handler(CommandHandler('linkgrab',linkgrab))
+	updater.dispatcher.add_handler(CommandHandler('help',help))
 	updater.dispatcher.add_handler(MessageHandler(Filters.photo,get_input))
 
 
