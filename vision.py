@@ -62,30 +62,5 @@ def detect_text_uri(path):
     else:
         return("no URLs found!")
 
-    # for text in texts:
-    #     print('\n"{}"'.format(text.description))
-
-        # vertices = (['({},{})'.format(bound.x_coordinate, bound.y_coordinate)
-        #             for bound in text.bounds.vertices])
-
-        # print('bounds: {}'.format(','.join(vertices)))
-
-# def detect_web(path):
-#     """Detects web annotations given an image."""
-#     vision_client = vision.Client()
-
-#     with io.open(path, 'rb') as image_file:
-#         content = image_file.read()
-
-#     image = vision_client.image(content=content)
-
-#     notes = image.detect_web()
-#     if notes.web_entities:
-#         print ('\n{} Web entities found: '.format(len(notes.web_entities)))
-
-#         for entity in notes.web_entities:
-#             print('Score      : {}'.format(entity.score))
-#             print('Description: {}'.format(entity.description))
-
-# path = "../images/test3.png"
-# print detect_text(path)
+# path = "https://www.crossref.org/wp/blog/uploads/2016/10/2.png"
+# print detect_text_uri(path)
